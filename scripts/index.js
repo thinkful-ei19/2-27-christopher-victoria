@@ -21,7 +21,6 @@ const fetchVideos = function(searchTerm, callback) {
     key: API_KEY,
   }
   $.getJSON(BASE_URL, query, (response) => {
-    console.log(response);
     return decorateResponse(response);
   });
 };
@@ -46,7 +45,6 @@ const decorateResponse = function(response) {
     }
     objArray.push(makeObject);
   }
-  console.log(objArray);
   addVideosToStore(objArray);
   render();
 };
@@ -84,12 +82,10 @@ const addVideosToStore = function(videos) {
 // TEST IT!
 const render = function() {
   const videoHtmlArr = store.videos.map(item => generateVideoItemHtml(item))
-  console.log(videoHtmlArr);
   let htmlString = '';
   for (i=0; i<videoHtmlArr.length; i++) {
     htmlString += videoHtmlArr[i];
   }
-  console.log(htmlString);
   $('.results').html(htmlString);
 };
 
