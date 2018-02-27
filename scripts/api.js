@@ -8,20 +8,22 @@ const fetchVideos = function(searchTerm, callback) {
       key: API_KEY,
     }
     const decorateResponse = function(response) {
-        const results = response.items.map((item, index) => [item.id.videoId, item.snippet.title, item.snippet.thumbnails.high.url]);
-        const objArray = [];
-        for (i=0; i<results.length; i++) {
-          let makeObject = {
-            id: results[i][0],
-            title: results[i][1],
-            thumbnail: results[i][2]
-          }
-          objArray.push(makeObject);
+      const results = response.items.map((item, index) => [item.id.videoId, item.snippet.title, item.snippet.thumbnails.high.url]);
+      const objArray = [];
+      for (i=0; i<results.length; i++) {
+        let makeObject = {
+          id: results[i][0],
+          title: results[i][1],
+          thumbnail: results[i][2]
         }
-        return objArray;
-      };
+        objArray.push(makeObject);
+      }
+      store.setVideos(objArray);
+    };
+    
     $.getJSON(BASE_URL, query, (response) => {
-      return decorateResponse(response);
+      decorateResponse(response);
+      callback();
     });
   };
   

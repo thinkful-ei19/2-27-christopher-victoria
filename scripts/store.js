@@ -1,8 +1,8 @@
 const store = {
     videos: [],
+
+    setVideos: function(arr) {
+      this.videos = arr;
+    }
   
   };
-
-  const setVideos = function(videos) {
-    videos = this.videos;
-  }

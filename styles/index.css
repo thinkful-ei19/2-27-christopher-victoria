@@ -23,8 +23,14 @@ a {
 img {
     width: 240px;
     clear: right;
+    float: left;
+}
+
+.video-item {
+    overflow: hidden;
 }
 
 h2 {
-
+    width: 60%;
+    display: inline-block;
 }
