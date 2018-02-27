@@ -24,9 +24,7 @@ const generateVideoItemHtml = function(video) {
       event.preventDefault();
       const searchTerm = $('#search-term').val();
       $('#search-term').val('');
-      fetchVideos(searchTerm, function(response) {
-        render();
-      });
+      fetchVideos(searchTerm, render());
     })
   };
 
