@@ -34,12 +34,20 @@ const fetchVideos = function(searchTerm, callback) {
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-//response.items
 const decorateResponse = function(response) {
   // const results = response.items.map((item, index) => render(item));
-  const results = response.items.map((item, index) => [item.id, item.snippet.title, item.snippet.thumbnails.high.url]);
-  console.log(results);
-
+  const results = response.items.map((item, index) => [item.id.videoId, item.snippet.title, item.snippet.thumbnails.high.url]);
+  const objArray = [];
+  for (i=0; i<results.length; i++) {
+    let makeObject = {
+      id: results[i][0],
+      title: results[i][1],
+      thumbnail: results[i][2]
+    }
+    objArray.push(makeObject);
+  }
+  console.log(objArray);
+  return objArray;
 };
 
 // TASK:
@@ -47,8 +55,13 @@ const decorateResponse = function(response) {
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function(video) {
+  //Temporary HTML string for test purposes.
   return `
-  <li>test</li>
+  <li>
+    <span></span>
+    <span></span>
+    <span></span>
+  </li>
   `
 };
 
