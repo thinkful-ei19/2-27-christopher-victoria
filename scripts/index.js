@@ -52,8 +52,8 @@ const decorateResponse = function(response) {
 };
 
 // TASK:
-// 1. Create a `generateVideoItemHtml` function that receives the decorated object
-// 2. Using the object, return an HTML string containing all the expected data
+// x1. Create a `generateVideoItemHtml` function that receives the decorated object
+// x2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function(video) {
   //Temporary HTML string for test purposes.
@@ -68,7 +68,7 @@ const generateVideoItemHtml = function(video) {
 
 
 // TASK:
-// 1. Create a `addVideosToStore` function that receives an array of decorated video
+// x1. Create a `addVideosToStore` function that receives an array of decorated video
 // objects and sets the array as the value held in store.items
 // TEST IT!
 const addVideosToStore = function(videos) {
@@ -76,9 +76,9 @@ const addVideosToStore = function(videos) {
 };
 
 // TASK:
-// 1. Create a `render` function
-// 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
-// 3. Add your array of DOM elements to the appropriate DOM element
+// x1. Create a `render` function
+// x2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
+// x3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
   const videoHtmlArr = store.videos.map(item => generateVideoItemHtml(item))
@@ -98,9 +98,9 @@ const render = function() {
 //   xb) Retrieve the search input from the DOM
 //   xc) Clear the search input field
 //   xd) Invoke the `fetchVideos` function, sending in the search value
-//   ---->e) Inside the callback, send the API response through the `decorateResponse` function
-//   f) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
-//   g) Inside the callback, run the `render` function
+//   xe) Inside the callback, send the API response through the `decorateResponse` function
+//   xf) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
+//   xg) Inside the callback, run the `render` function
 // TEST IT!
 const handleFormSubmit = function() {
   $('form').on('submit', function(event) {
