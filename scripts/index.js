@@ -34,10 +34,12 @@ const fetchVideos = function(searchTerm, callback) {
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
+//response.items
 const decorateResponse = function(response) {
-  const results = response.items.map((item, index) => render(item));
+  // const results = response.items.map((item, index) => render(item));
+  const results = response.items.map((item, index) => [item.id, item.snippet.title, item.snippet.thumbnails.high.url]);
   console.log(results);
-  const html = $('.results').html(results);
+
 };
 
 // TASK:
