@@ -1,7 +1,8 @@
 const API_KEY = 'AIzaSyBco2kUNnQlmcmemhUS9SlcW0XwW_1LNeQ';
 
 const store = {
-  videos: []
+  videos: [],
+
 };
 
 // TASK: Add the Youtube Search Base URL here:
@@ -9,9 +10,9 @@ const store = {
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 // TASK:
-// 1. Create a `fetchVideos` function that receives a `searchTerm` and `callback`
-// 2. Use `searchTerm` to construct the right query object based on the Youtube API docs
-// 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
+// x1. Create a `fetchVideos` function that receives a `searchTerm` and `callback`
+// x2. Use `searchTerm` to construct the right query object based on the Youtube API docs
+// x3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
 const fetchVideos = function(searchTerm, callback) {
   const query = {
@@ -26,9 +27,9 @@ const fetchVideos = function(searchTerm, callback) {
 };
 
 // TASK:
-// 1. Create a `decorateResponse` function that receives the Youtube API response
-// 2. Map through the response object's `items` array
-// 3. Return an array of objects, where each object contains the keys `id`, `title`,
+// x1. Create a `decorateResponse` function that receives the Youtube API response
+// x2. Map through the response object's `items` array
+// x3. Return an array of objects, where each object contains the keys `id`, `title`,
 // `thumbnail` which each hold the appropriate values from the API item object. You
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
@@ -36,7 +37,7 @@ const fetchVideos = function(searchTerm, callback) {
 const decorateResponse = function(response) {
   const results = response.items.map((item, index) => render(item));
   console.log(results);
-    $('.results').html(results);
+  const html = $('.results').html(results);
 };
 
 // TASK:
@@ -44,7 +45,9 @@ const decorateResponse = function(response) {
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function(video) {
-
+  return `
+  <li>test</li>
+  `
 };
 
 // TASK:
@@ -61,16 +64,17 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-
+  const videoResults = store.videos.map(video => generateVideoItemHtml(video));
+  $('.results').html(videoResults);
 };
 
 // TASK:
-// 1. Create a `handleFormSubmit` function that adds an event listener to the form
+// x1. Create a `handleFormSubmit` function that adds an event listener to the form
 // 2. The listener should:
-//   a) Prevent default event
-//   b) Retrieve the search input from the DOM
-//   c) Clear the search input field
-//   d) Invoke the `fetchVideos` function, sending in the search value
+//   xa) Prevent default event
+//   xb) Retrieve the search input from the DOM
+//   xc) Clear the search input field
+//   xd) Invoke the `fetchVideos` function, sending in the search value
 //   ---->e) Inside the callback, send the API response through the `decorateResponse` function
 //   f) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
 //   g) Inside the callback, run the `render` function
