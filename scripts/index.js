@@ -59,8 +59,10 @@ const generateVideoItemHtml = function(video) {
   //Temporary HTML string for test purposes.
   return `
   <li>
+  <div>
     <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank"><img src="${video.thumbnail}"></a>
     <h2>${video.title}</h2>
+  </div>
   </li>
   `
 };
@@ -77,7 +79,7 @@ const addVideosToStore = function(videos) {
 
 // TASK:
 // x1. Create a `render` function
-// x2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
+// x2. Map through `store.vid---->eos`, sending each `video` through your `generateVideoItemHtml`
 // x3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {

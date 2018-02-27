@@ -12,9 +12,19 @@ body {
 
 li {
     padding: 50px;
+    list-style: none;
+    border: 3px solid black;
+}
+
+a {
+    text-align: left;
 }
 
 img {
     width: 240px;
-    float:left;
+    clear: right;
+}
+
+h2 {
+    
 }
