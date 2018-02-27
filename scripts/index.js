@@ -47,10 +47,8 @@ const decorateResponse = function(response) {
     objArray.push(makeObject);
   }
   console.log(objArray);
-  addVideosToStore(objArray)
-  const video = objArray.map(item => generateVideoItemHtml(item))
-
-
+  addVideosToStore(objArray);
+  render();
 };
 
 // TASK:
@@ -61,9 +59,8 @@ const generateVideoItemHtml = function(video) {
   //Temporary HTML string for test purposes.
   return `
   <li>
-    <span>${video.id}</span>
-    <span>${video.title}</span>
-    <span>${video.thumbnail}</span>
+    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank"><img src="${video.thumbnail}"></a>
+    <h2>${video.title}</h2>
   </li>
   `
 };
@@ -84,8 +81,14 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-  const videoResults = store.videos.map(video => generateVideoItemHtml(video));
-  $('.results').html(videoResults);
+  const videoHtmlArr = store.videos.map(item => generateVideoItemHtml(item))
+  console.log(videoHtmlArr);
+  let htmlString = '';
+  for (i=0; i<videoHtmlArr.length; i++) {
+    htmlString += videoHtmlArr[i];
+  }
+  console.log(htmlString);
+  $('.results').html(htmlString);
 };
 
 // TASK:
@@ -105,7 +108,6 @@ const handleFormSubmit = function() {
     const searchTerm = $('#search-term').val();
     $('#search-term').val('');
     fetchVideos(searchTerm);
-
   })
 };
 
