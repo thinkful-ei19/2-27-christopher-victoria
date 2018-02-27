@@ -47,7 +47,10 @@ const decorateResponse = function(response) {
     objArray.push(makeObject);
   }
   console.log(objArray);
-  return objArray;
+  addVideosToStore(objArray)
+  const video = objArray.map(item => generateVideoItemHtml(item))
+
+
 };
 
 // TASK:
@@ -58,19 +61,21 @@ const generateVideoItemHtml = function(video) {
   //Temporary HTML string for test purposes.
   return `
   <li>
-    <span></span>
-    <span></span>
-    <span></span>
+    <span>${video.id}</span>
+    <span>${video.title}</span>
+    <span>${video.thumbnail}</span>
   </li>
   `
 };
+
+
 
 // TASK:
 // 1. Create a `addVideosToStore` function that receives an array of decorated video
 // objects and sets the array as the value held in store.items
 // TEST IT!
 const addVideosToStore = function(videos) {
-
+ store.videos = videos
 };
 
 // TASK:
